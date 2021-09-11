@@ -10,6 +10,6 @@ def index():
     """
 
     sources = get_sources()
-    title = 'News from the most Reputable Sources'
+    title = "News from the most Reputable Sources"
 
-    return render_template('index.html',title=title, sources = sources)
+    return render_template("index.html", title=title, sources=sources)
