@@ -1,2 +1,4 @@
-{% extends 'base.html'%} {% import 'macros.html' as macro%}
-{{macro.listSources}}
+{% extends 'base.html'%} {% import 'macros.html' as macro%} {%block content%}
+{{macro.listSources(sources)}}
+<h2>You</h2>
+{%endblock%}
