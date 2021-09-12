@@ -1,5 +1,8 @@
 {% macro listSources(sources_list) %} {% for source in sources_list %}
 <div class="sources">
-  <li>{{source.name}}</li>
+  <li>
+    {{source.name}} <br />
+    {{source.description|truncate(100)}}
+  </li>
 </div>
 {% endfor %} {% endmacro %}
