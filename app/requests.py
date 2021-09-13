@@ -1,17 +1,20 @@
 import urllib.request, json
-from .models import Sources
+from .models import Sources, Articles
 
 # Getting api key
 api_key = None
 
 # Getting sources base url
 sources_base_url = None
+# Getting articles base url
+articles_base_url = None
 
 
 def configure_request(app):
-    global api_key, sources_base_url
+    global api_key, sources_base_url, articles_base_url
     api_key = app.config["SOURCES_API_KEY"]
     sources_base_url = app.config["SOURCES_API_BASE_URL"]
+    articles_base_url = app.config["ARTICLES_API_BASE_URL"]
 
 
 def get_sources():
@@ -28,11 +31,11 @@ def get_sources():
 
         if get_sources_response["sources"]:
             sources_results_list = get_sources_response["sources"]
-            sources_results = process_results(sources_results_list)
+            sources_results = process_results_sources(sources_results_list)
     return sources_results
 
 
-def process_results(sources_list):
+def process_results_sources(sources_list):
     """
     Function to process the sources result and turn them to a list of object
     Args:
@@ -52,3 +55,47 @@ def process_results(sources_list):
         sources_results.append(sources_object)
 
     return sources_results
+
+
+def get_articles(source_id):
+    """
+    Function to get json response of articles from api
+    """
+    get_articles_url = articles_base_url.format(source_id, api_key)
+
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
+
+        articles_results = None
+
+        if get_articles_response["articles"]:
+            articles_results_list = get_articles_response["articles"]
+            articles_results = process_results_articles(articles_results_list)
+    return articles_results
+
+
+def process_results_articles(articles_list):
+    """
+    Function to process the articles result and turn them to a list of object
+    Args:
+        articless_list: A list of dictionaries to contain articles details
+    Returns:
+        articles_results: A list of articles objects
+    """
+    articles_results = []
+    for articles_item in articles_list:
+        author = articles_item.get("author")
+        title = articles_item.get("title")
+        description = articles_item.get("description")
+        url = articles_item.get("url")
+        urlToImage = articles_item.get("urlToImage")
+        publishedAt = articles_item.get("publishedAt")
+
+        articles_object = Articles(
+            author, title, description, url, urlToImage, publishedAt,
+        )
+
+        articles_results.append(articles_object)
+
+    return articles_results

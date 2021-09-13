@@ -1,8 +1,22 @@
 {% macro listSources(sources_list) %} {% for source in sources_list %}
 <div class="sources">
   <li>
-    {{source.name}} <br />
+    <a href="/articles/{{source.id}}">{{source.name}}</a> <br />
     {{source.description|truncate(100)}}
+  </li>
+</div>
+{% endfor %} {% endmacro %} {% macro listArticles(articles_list) %} {% for
+article in articles_list %}
+<div class="articles">
+  <li>
+    <div>
+      <img src="{{article.urlToImage}}" alt="" />
+    </div>
+    <p>{{article.title}}</p>
+    <p>{{article.description}}</p>
+    <p>{{article.author}}</p>
+    <p>{{article.publishedAt}}</p>
+    <a href="{{article.url}}">Read More ...</a>
   </li>
 </div>
 {% endfor %} {% endmacro %}

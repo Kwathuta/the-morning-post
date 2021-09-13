@@ -1,0 +1,3 @@
+{% extends 'base.html'%} {% import 'macros.html' as macro%} {%block content%}
+<h2>Latest News</h2>
+{{macro.listArticles(articles)}} {% endblock%}
