@@ -1,2 +1,16 @@
-{% extends 'base.html'%} {% import 'macros.html' as macro%} {%block content%}
+{% extends 'base.html'%} {% import 'macros.html' as macro%} {%block styles%} {{
+super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}" />
+{%endblock%} {%block content%}
+<div class="hero">
+  <div class="header">
+    <img src="../static/img/the morning post.svg" alt="" />
+  </div>
+  <div class="tagline">
+    <p>
+      Bringing you timely news from all your trusted platforms in one visit!
+    </p>
+    <button>Select Source</button>
+  </div>
+</div>
 {{macro.listSources(sources)}} {%endblock%}
