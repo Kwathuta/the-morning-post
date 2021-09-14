@@ -92,8 +92,12 @@ a:hover {
 }
 
 footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   height: 100px;
   background: #040d21;
+  color: #e5e5e5;
 }
 
 /* Styling Articles */
