@@ -1,12 +1,21 @@
-{% macro listSources(sources_list) %} {% for source in sources_list %}
-<div class="sources">
-  <li>
-    <a href="/articles/{{source.id}}">{{source.name}}</a> <br />
-    {{source.description|truncate(100)}}
-  </li>
+{% macro listSources(sources_list) %}
+<div class="row" id="row">
+  {% for source in sources_list %}
+  <div class="col-lg-4">
+    <a href="/articles/{{source.id}}" target="_blank">
+      <div class="sources">
+        <li>
+          <div class="heading">{{source.name|truncate(20)}}</div>
+          <div class="sub-heading">{{source.description|truncate(100)}}</div>
+        </li>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
 </div>
-{% endfor %} {% endmacro %} {% macro listArticles(articles_list) %} {% for
-article in articles_list %}
+
+{% endmacro %} {% macro listArticles(articles_list) %} {% for article in
+articles_list %}
 <div class="articles">
   <li>
     <div>

@@ -10,7 +10,8 @@ super() }}
     <p>
       Bringing you timely news from all your trusted platforms in one visit!
     </p>
-    <button>Select Source</button>
+    <a href="#row"><button>Select Source</button></a>
   </div>
 </div>
-{{macro.listSources(sources)}} {%endblock%}
+<div class="content-section">{{macro.listSources(sources)}}</div>
+{%endblock%}
