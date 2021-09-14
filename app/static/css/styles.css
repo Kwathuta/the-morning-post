@@ -56,7 +56,8 @@ a:hover {
   padding: 100px 100px;
 }
 
-.sources {
+.sources,
+.articles {
   font-family: Poppins;
   background: #ffffff;
   box-shadow: 0px 20px 20px 4px rgba(4, 13, 33, 0.15);
@@ -88,4 +89,67 @@ a:hover {
   font-size: 14px;
   line-height: 21px;
   color: #000000;
+}
+
+footer {
+  height: 100px;
+  background: #040d21;
+}
+
+/* Styling Articles */
+
+.main-section {
+  width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.articles {
+  padding: 50px;
+}
+
+.articles button {
+  margin-top: 20px;
+  padding: 5px 20px;
+  background: transparent;
+  border: 2px solid #040d21;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #040d21;
+}
+
+.articles button:hover {
+  margin-top: 20px;
+  padding: 5px 20px;
+  background: #040d21;
+  border: 2px solid #040d21;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #e5e5e5;
+  transition: 800ms;
+}
+
+li {
+  list-style-type: none;
+}
+
+#article,
+#description,
+#author,
+#published {
+  text-align: left;
+}
+
+#article {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+#published {
+  font-style: italic;
+}
+
+.credits {
+  margin: 10px;
 }

@@ -14,18 +14,26 @@
   {% endfor %}
 </div>
 
-{% endmacro %} {% macro listArticles(articles_list) %} {% for article in
-articles_list %}
-<div class="articles">
-  <li>
-    <div>
-      <img src="{{article.urlToImage}}" alt="" />
-    </div>
-    <p>{{article.title}}</p>
-    <p>{{article.description}}</p>
-    <p>{{article.author}}</p>
-    <p>{{article.publishedAt}}</p>
-    <a href="{{article.url}}">Read More ...</a>
-  </li>
+{% endmacro %} {% macro listArticles(articles_list) %}
+<div class="items">
+  {% for article in articles_list %}
+  <div class="articles">
+    <li>
+      <div>
+        <img src="{{article.urlToImage}}" alt="" class="w-100 img-thumbnail" />
+      </div>
+      <div class="credits">
+        <p id="article">{{article.title}}</p>
+        <p id="description">{{article.description}}</p>
+        <p id="published">
+          {{article.publishedAt|truncate(13)}} | {{article.author}}
+        </p>
+        <a href="{{article.url}}" target="_blank"
+          ><button>Go to Story</button></a
+        >
+      </div>
+    </li>
+  </div>
+  {% endfor %}
 </div>
-{% endfor %} {% endmacro %}
+{% endmacro %}
